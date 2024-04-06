@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "blog-engine"
+version = "0.1.0"
+description = "Engine for blog using Django"
+authors = ["Marcelo Machado <mjoelmachadojr@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.11.8"
+django = "^5.0.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
