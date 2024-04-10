@@ -1,0 +1,11 @@
+:root {
+  --clr-white: hsl(216 100% 98%);
+  --clr-black: hsl(216 100% 5%);
+  --clr-primary: hsl(216 100% 50%);
+  --clr-primary-light: hsl(216 100% 50% / .8);
+}
+
+body {
+  background-color: var(--clr-white);
+  color: var(--clr-black);
+}
