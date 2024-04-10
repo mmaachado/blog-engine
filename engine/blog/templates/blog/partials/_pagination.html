@@ -9,15 +9,15 @@
       <nav class="pagination-links" aria-label="Pagination">
         <span class="step-links">
             {% if page_obj.has_previous %}
-              <a title="Page 1" aria-label="Page 1" href="?page=1{{ search_url }}">
-                  <i class="fa-solid fa-backward-fast"></i>
+              <a title="Page 1" aria-label="Page 1" href="?page=1{{ search_url }}" class="material-symbols-outlined">
+                  first_page
               </a>
-              <a title="Page {{ page_obj.previous_page_number }}" aria-label="Page {{ page_obj.previous_page_number }}" href="?page={{ page_obj.previous_page_number }}{{ search_url }}">
-                <i class="fa-solid fa-circle-chevron-left"></i>
+              <a title="Page {{ page_obj.previous_page_number }}" aria-label="Page {{ page_obj.previous_page_number }}" href="?page={{ page_obj.previous_page_number }}{{ search_url }}" class="material-symbols-outlined">
+                  navigate_before
               </a>
             {% else %}
-              <span title="Current page" aria-current="page">
-                <i class="fa-solid fa-circle-chevron-up"></i>
+              <span title="Current page" aria-current="page" class="material-symbols-outlined">
+                  keyboard_arrow_up
               </span>          
             {% endif %}
 
@@ -26,15 +26,15 @@
             </span>
 
             {% if page_obj.has_next %}
-              <a title="Page {{ page_obj.next_page_number }}" aria-label="Page {{ page_obj.next_page_number }}" href="?page={{ page_obj.next_page_number }}{{ search_url }}">
-                <i class="fa-solid fa-circle-chevron-right"></i>
+              <a title="Page {{ page_obj.next_page_number }}" aria-label="Page {{ page_obj.next_page_number }}" href="?page={{ page_obj.next_page_number }}{{ search_url }}" class="material-symbols-outlined">
+                  navigate_next
               </a>
-              <a title="Page {{ page_obj.paginator.num_pages }}" aria-label="Page {{ page_obj.paginator.num_pages }}" href="?page={{ page_obj.paginator.num_pages }}{{ search_url }}">
-                <i class="fa-solid fa-forward-fast"></i>
+              <a title="Page {{ page_obj.paginator.num_pages }}" aria-label="Page {{ page_obj.paginator.num_pages }}" href="?page={{ page_obj.paginator.num_pages }}{{ search_url }}" class="material-symbols-outlined">
+                  last_page
               </a>
             {% else %}
-              <span title="Current page" aria-current="page">
-                <i class="fa-solid fa-circle-chevron-up"></i>
+              <span title="Current page" aria-current="page" class="material-symbols-outlined">
+                keyboard_arrow_up
               </span>          
             {% endif %}
         </span>

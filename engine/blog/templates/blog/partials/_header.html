@@ -16,7 +16,7 @@
       <div class="search pb-base center">
         <form class="search-form" action="#" method="get">
           <div class="search-content">
-            <label class="sr-only" id="search-label" for="search-input">Search</label>
+            <label class="sr-only" id="search-label" for="search-input">search</label>
             <input
               class="search-input"
               type="search"
@@ -26,7 +26,10 @@
               value="Non risu potius quam oratione eiciendum? Quo pleb "
             >
             <button class="search-btn" type="submit" aria-labelledby="search-label">
-              <i class="fa fa-search"></i>
+              {% comment %} <i class="fa fa-search"></i> {% endcomment %}
+              <span class="material-symbols-outlined">
+                search
+              </span>
             </button>
           </div>
         </form>
@@ -35,19 +38,19 @@
       <nav class="menu">
         <ul class="menu-items">
           <li class="menu-item">
-            <a class="menu-link" href="/post/">Post</a>
+            <a class="menu-link" href="/post/">post</a>
           </li>
           <li class="menu-item">
-            <a class="menu-link" href="/page/">Page</a>
+            <a class="menu-link" href="/page/">page</a>
           </li>
           <li class="menu-item">
-            <a class="menu-link" href="#">About</a>
+            <a class="menu-link" href="#">about</a>
           </li>
           <li class="menu-item">
-            <a class="menu-link" href="#">Contact</a>
+            <a class="menu-link" href="#">contact</a>
           </li>
           <li class="menu-item">
-            <a class="menu-link" href="#">Support</a>
+            <a class="menu-link" href="#">support</a>
           </li>
         </ul>
       </nav>
