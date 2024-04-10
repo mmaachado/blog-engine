@@ -34,11 +34,11 @@ extend-exclude = '(migrations/)'
 [tool.taskipy.tasks]
 lint = 'ruff . && blue --check . --diff && isort --check . --diff'
 format = 'blue . && isort .'
-run = 'python backend/manage.py runserver'
-user = 'python backend/manage.py createuser'
-superuser = 'python backend/manage.py createsuperuser'
-makemigration = 'python backend/manage.py makemigrations'
-migrate = 'python backend/manage.py migrate'
+run = 'python engine/manage.py runserver'
+user = 'python engine/manage.py createuser'
+superuser = 'python engine/manage.py createsuperuser'
+makemigration = 'python engine/manage.py makemigrations'
+migrate = 'python engine/manage.py migrate'
 
 [build-system]
 requires = ["poetry-core"]
