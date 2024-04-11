@@ -321,6 +321,15 @@ html,
   gap: var(--spacing-base);
 }
 
+.emoji:before {
+  content: "❤️";
+}
+
+.emoji:hover:before {
+  transition: opacity 300ms ease-in-out;
+  content: "☂️";
+}
+
 /* Single Post */
 .single-post-content {
   padding-top: var(--spacing-smlst);

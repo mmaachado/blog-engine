@@ -3,58 +3,56 @@
     <div class="section-gap">
 
       <h1 class="blog-title center pb-base">
-        <a class="blog-link" href="/"> Blog do Marquês </a>
+        <a class="blog-link" href="/"> {{ blog_setup.title }} </a>
       </h1>
       
-      <p class="blog-description pb-base center">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ipsam
-        neque explicabo sequi, voluptas saepe porro atque provident, reiciendis
-        natus harum labore nisi eum consectetur cumque minima dolorem adipisci?
-        Dolores?
-      </p>
+      {% if blog_setup.show_description %}
+        <p class="blog-description pb-base center">
+          {{ blog_setup.description }}
+        </p>
+      {% endif %}
 
-      <div class="search pb-base center">
-        <form class="search-form" action="#" method="get">
-          <div class="search-content">
-            <label class="sr-only" id="search-label" for="search-input">search</label>
-            <input
-              class="search-input"
-              type="search"
-              name="search"
-              id="search-input"
-              placeholder="Search"
-              value="Non risu potius quam oratione eiciendum? Quo pleb "
-            >
-            <button class="search-btn" type="submit" aria-labelledby="search-label">
-              {% comment %} <i class="fa fa-search"></i> {% endcomment %}
-              <span class="material-symbols-outlined">
-                search
-              </span>
-            </button>
-          </div>
-        </form>
-      </div>
-
-      <nav class="menu">
-        <ul class="menu-items">
-          <li class="menu-item">
-            <a class="menu-link" href="/post/">post</a>
-          </li>
-          <li class="menu-item">
-            <a class="menu-link" href="/page/">page</a>
-          </li>
-          <li class="menu-item">
-            <a class="menu-link" href="#">about</a>
-          </li>
-          <li class="menu-item">
-            <a class="menu-link" href="#">contact</a>
-          </li>
-          <li class="menu-item">
-            <a class="menu-link" href="#">support</a>
-          </li>
-        </ul>
-      </nav>
+      {% if blog_setup.show_search %}
+        <div class="search pb-base center">
+          <form class="search-form" action="#" method="get">
+            <div class="search-content">
+              <label class="sr-only" id="search-label" for="search-input">search</label>
+              <input
+                class="search-input"
+                type="search"
+                name="search"
+                id="search-input"
+                placeholder="Search">
+              <button class="search-btn" type="submit" aria-labelledby="search-label">
+                <span class="material-symbols-outlined">
+                  search
+                </span>
+              </button>
+            </div>
+          </form>
+        </div>
+      {% endif %}
       
+      {% if blog_setup.show_menu %}
+        <nav class="menu">
+          <ul class="menu-items">
+            {% for link in blog_setup.menulink_set.all %}
+              <li class="menu-item">
+                {% if link.new_tab %}
+                  <a target="_blank" class="menu-link" href="{{ link.url_or_path }}">
+                    {{ link.text }}
+                  </a>
+                {% else %}
+                  <a class="menu-link" href="{{ link.url_or_path }}">
+                    {{ link.text }}
+                  </a>
+                {% endif %}
+
+            {% endfor %}
+            </li>
+          </ul>
+        </nav>
+      {% endif %}
     </div>
   </div>
 </header>
