@@ -2,6 +2,24 @@ from django.db import models
 from utils.randoms import new_slug
 from django.contrib.auth.models import User
 from utils.images import resize_image
+from django_summernote.models import AbstractAttachment
+
+class PostAttachment(AbstractAttachment):
+    def save(self, *args, **kwargs):
+        if not self.name:
+            self.name = self.file.name
+
+        current_file_name = str(self.file_name)
+        super_save = super().save(*args, **kwargs)
+        file_changed = False
+
+        if self.file:
+            file_changed = current_file_name != self.file.name
+        
+        if file_changed:
+            resize_image(self.cover, 900)
+
+        return super_save
 
 class Tag(models.Model):
     class Meta:
