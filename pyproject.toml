@@ -9,6 +9,7 @@ readme = "README.md"
 python = "3.11.*"
 django = "^5.0.4"
 pillow = "^10.3.0"
+django-summernote = "^0.8.20.0"
 
 
 [tool.poetry.group.dev.dependencies]
