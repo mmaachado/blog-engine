@@ -155,7 +155,7 @@ class Post(models.Model):
         if not self.slug:
             self.slug = new_slug(self.title)
         
-        current_cover_name = str(self.cover_name)
+        current_cover_name = str(self.cover.name)
         super_save = super().save(*args, **kwargs)
         cover_changed = False
 
