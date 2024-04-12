@@ -1,4 +1,4 @@
-from blog.views import index, page, post, category, created_by
+from blog.views import category, created_by, index, page, post
 from django.urls import path
 
 app_name = 'blog'

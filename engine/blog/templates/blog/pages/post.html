@@ -1,5 +1,26 @@
 {% extends 'blog/base.html' %}
 
+{% block additional_head %}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/monokai.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/python/python.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/commonlisp/commonlisp.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/django/django.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/dockerfile/dockerfile.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/http/http.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/jinja2/jinja2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/markdown/markdown.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/shell/shell.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/sql/sql.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/toml/toml.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/yaml/yaml.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/javascript/javascript.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/htmlmixed/htmlmixed.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/css/css.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/xml/xml.min.js"></script>
+{% endblock additional_head %}
+
 {% block content %}
 <main class="main-content single-post section-wrapper">
   <div class="single-post-content section-content-narrow">

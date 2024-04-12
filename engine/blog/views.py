@@ -1,8 +1,9 @@
+from blog.models import Post
 from django.core.paginator import Paginator
 from django.shortcuts import render
-from blog.models import Post
 
 PER_PAGE: int = 9
+
 
 def index(request):
     posts = Post.objects.get_published()
@@ -17,6 +18,7 @@ def index(request):
             'page_obj': page_obj,
         },
     )
+
 
 def category(request, slug):
     posts = Post.objects.get_published().filter(category__slug=slug)
@@ -36,7 +38,7 @@ def category(request, slug):
 
 def page(request, slug):
 
-    return render(request,'blog/pages/page.html')
+    return render(request, 'blog/pages/page.html')
 
 
 def post(request, slug):
@@ -46,16 +48,16 @@ def post(request, slug):
         request,
         'blog/pages/post.html',
         {
-         'post': post,
-        })
+            'post': post,
+        },
+    )
 
 
 def created_by(request, author_pk):
-    posts = Post.objects.get_published()\
-        .filter(created_by__pk=author_pk)
+    posts = Post.objects.get_published().filter(created_by__pk=author_pk)
 
     paginator = Paginator(posts, PER_PAGE)
-    page_number = request.GET.get("page")
+    page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
     return render(
@@ -63,12 +65,12 @@ def created_by(request, author_pk):
         'blog/pages/index.html',
         {
             'page_obj': page_obj,
-        }
+        },
     )
     return render(
         request,
         'blog/pages/index.html',
         {
             'page_obj': page_obj,
-        }
+        },
     )

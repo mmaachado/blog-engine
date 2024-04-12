@@ -1,8 +1,9 @@
-from blog.models import Category, Page, Tag, Post
+from blog.models import Category, Page, Post, Tag
 from django.contrib import admin
-from django_summernote.admin import SummernoteModelAdmin
 from django.urls import reverse
 from django.utils.safestring import mark_safe
+from django_summernote.admin import SummernoteModelAdmin
+
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
@@ -61,7 +62,7 @@ class PostAdmin(SummernoteModelAdmin):
         'is_published',
         'created_by',
     )
-    list_display_links = 'title',
+    list_display_links = ('title',)
     search_fields = (
         'id',
         'slug',
@@ -70,21 +71,35 @@ class PostAdmin(SummernoteModelAdmin):
         'content',
     )
     list_per_page = 50
-    list_filter = 'category', 'is_published',
-    list_editable = 'is_published',
-    ordering = '-id',
-    readonly_fields = 'created_at', 'updated_at', 'created_by', 'updated_by', 'link',
+    list_filter = (
+        'category',
+        'is_published',
+    )
+    list_editable = ('is_published',)
+    ordering = ('-id',)
+    readonly_fields = (
+        'created_at',
+        'updated_at',
+        'created_by',
+        'updated_by',
+        'link',
+    )
     prepopulated_fields = {
         'slug': ('title',),
     }
-    autocomplete_fields = 'tags', 'category',
+    autocomplete_fields = (
+        'tags',
+        'category',
+    )
 
     def link(self, obj):
         if not obj.pk:
             return '-'
 
         post_url = obj.get_absolute_url()
-        safe_link = mark_safe(f'<a target="_blank" href="{post_url}">preview</a>')
+        safe_link = mark_safe(
+            f'<a target="_blank" href="{post_url}">preview</a>'
+        )
 
         return safe_link
 

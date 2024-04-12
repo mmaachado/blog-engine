@@ -1,9 +1,9 @@
-from django.db import models
-from utils.randoms import new_slug
 from django.contrib.auth.models import User
-from utils.images import resize_image
-from django_summernote.models import AbstractAttachment
+from django.db import models
 from django.urls import reverse
+from django_summernote.models import AbstractAttachment
+from utils.images import resize_image
+from utils.randoms import new_slug
 
 
 class PostAttachment(AbstractAttachment):
@@ -22,6 +22,7 @@ class PostAttachment(AbstractAttachment):
             resize_image(self.cover, 900)
 
         return super_save
+
 
 class Tag(models.Model):
     class Meta:
@@ -96,9 +97,11 @@ class Page(models.Model):
     def __str__(self) -> str:
         return self.title
 
+
 class PostManager(models.Manager):
     def get_published(self):
         return self.filter(is_published=True).order_by('-pk')
+
 
 class Post(models.Model):
     class Meta:
@@ -119,13 +122,9 @@ class Post(models.Model):
         help_text='check to publish this post',
     )
     content = models.TextField()
-    cover = models.ImageField(
-        upload_to='posts/%Y/%m',
-        blank=True,
-        default='')
+    cover = models.ImageField(upload_to='posts/%Y/%m', blank=True, default='')
     cover_in_post_content = models.BooleanField(
-        default=False,
-        help_text='show cover image on post content?'
+        default=False, help_text='show cover image on post content?'
     )
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(
@@ -133,7 +132,7 @@ class Post(models.Model):
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
-        related_name='created_by'
+        related_name='created_by',
     )
     updated_at = models.DateTimeField(auto_now=True)
     updated_by = models.ForeignKey(
@@ -141,7 +140,7 @@ class Post(models.Model):
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
-        related_name='updated_by'
+        related_name='updated_by',
     )
     category = models.ForeignKey(
         Category,
@@ -150,11 +149,7 @@ class Post(models.Model):
         blank=True,
         default=None,
     )
-    tags = models.ManyToManyField(
-        Tag,
-        blank=True,
-        default=''
-    )
+    tags = models.ManyToManyField(Tag, blank=True, default='')
 
     def __str__(self) -> str:
         return self.title
