@@ -49,7 +49,26 @@ def post(request, slug):
          'post': post,
         })
 
-def about(request):
+
+def created_by(request, author_pk):
+    posts = Post.objects.get_published()\
+        .filter(created_by__pk=author_pk)
+
+    paginator = Paginator(posts, PER_PAGE)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
     return render(
         request,
-        'blog/pages/about.html')
+        'blog/pages/index.html',
+        {
+            'page_obj': page_obj,
+        }
+    )
+    return render(
+        request,
+        'blog/pages/index.html',
+        {
+            'page_obj': page_obj,
+        }
+    )
