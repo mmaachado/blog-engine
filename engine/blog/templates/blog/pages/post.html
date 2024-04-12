@@ -86,47 +86,22 @@
 
       <div class="single-post-content">
         {{ post.content | safe }}
-        <div class="post-tags">
-          <span>tags: </span>
-
-          <a class="post-tag-link" href="#">
-            <span class="material-symbols-outlined">
-              tag
-              </span>
-            <span>test</span>
-          </a>
-
-          <a class="post-tag-link" href="#">
-            <span class="material-symbols-outlined">
-              link
-              </span>
-            <span>att</span>
-          </a>
-
-          <a class="post-tag-link" href="#">
-            <span class="material-symbols-outlined">
-              link
-              </span>
-            <span>thanks</span>
-          </a>
-
-          <a class="post-tag-link" href="#">
-            <span class="material-symbols-outlined">
-              link
-              </span>
-            <span>django</span>
-          </a>
-
-          <a class="post-tag-link" href="#">
-            <span class="material-symbols-outlined">
-              link
-              </span>
-            <span>python</span>
-          </a>
+        {% if post.tags.all.exists %}
+          <div class="post-tags">
+              <span>tags: </span>
+              {% for tag in post.tags.all %}
+                <a class="post-tag-link" href="{% url "blog:tag" tag.slug %}">
+                  <span class="material-symbols-outlined">
+                    tag
+                    </span>
+                  <span>{{ tag.name }}</span>
+                </a>
+              {% endfor %}
+              
+            </div>
+          {% endif %}
 
         </div>
-
-      </div>
 
     </div>
   </div>
