@@ -2,12 +2,11 @@ from typing import Any
 
 from blog.models import Page, Post
 from django.contrib.auth.models import User
-from django.core.paginator import Paginator
 from django.db.models import Q
 from django.db.models.query import QuerySet
 from django.http import Http404
 from django.shortcuts import redirect, render
-from django.views.generic import ListView
+from django.views.generic import DetailView, ListView
 
 PER_PAGE: int = 9
 
@@ -136,7 +135,7 @@ class SearchListView(PostListView):
         context = super().get_context_data(**kwargs)
         context.update(
             {
-                'page_title': f'cat {self._search_value[:30]}',
+                'page_title': f'cat {self._search_value[:30]} @',
                 'search_value': self._search_value,
             }
         )
@@ -149,25 +148,25 @@ class SearchListView(PostListView):
         return super().get(request, *args, **kwargs)
 
 
-def page(request, slug):
+class PageDetailView(DetailView):
+    model = Page
+    template_name = 'blog/pages/page.html'
+    slug_field = 'slug'
+    context_object_name = 'page'
 
-    page_object = (
-        Page.objects.filter(is_published=True).filter(slug=slug).first()
-    )
+    def get_context_data(self, **kwargs) -> dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        page = self.get_object()
+        page_title = f'{page.title}'
+        context.update(
+            {
+                'page_title': page_title,
+            }
+        )
+        return context
 
-    if page_object is None:
-        raise Http404()
-
-    page_title = page_object.title
-
-    return render(
-        request,
-        'blog/pages/page.html',
-        {
-            'page': page_object,
-            'page_title': page_title,
-        },
-    )
+    def get_queryset(self):
+        return super().get_queryset().filter(is_published=True)
 
 
 def post(request, slug):
