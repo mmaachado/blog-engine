@@ -149,31 +149,6 @@ class SearchListView(PostListView):
         return super().get(request, *args, **kwargs)
 
 
-def search(request):
-    search_value = request.GET.get('search', '')
-
-    posts = Post.objects.get_published().filter(
-        Q(title__icontains=search_value)
-        | Q(excerpt__icontains=search_value)
-        | Q(content__icontains=search_value)
-    )[:PER_PAGE]
-
-    if len(posts) == 0:
-        raise Http404()
-
-    page_title = f'cat {search_value[:30]} - '
-
-    return render(
-        request,
-        'blog/pages/index.html',
-        {
-            'page_obj': posts,
-            'search_value': search_value,
-            'page_title': page_title,
-        },
-    )
-
-
 def page(request, slug):
 
     page_object = (
