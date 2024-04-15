@@ -50,7 +50,9 @@ class CreatedByListView(PostListView):
 
     def get_queryset(self) -> QuerySet[Any]:
         queryset = super().get_queryset()
-        queryset = queryset.filter(created_by__pk=self._temp_context['user'].pk)
+        queryset = queryset.filter(
+            created_by__pk=self._temp_context['user'].pk
+        )
         return queryset
 
     def get(self, request, *args, **kwargs):
@@ -71,7 +73,24 @@ class CreatedByListView(PostListView):
 
 
 class CategoryListView(PostListView):
-    ...
+    allow_empty = False
+
+    def get_queryset(self):
+        return (
+            super()
+            .get_queryset()
+            .filter(category__slug=self.kwargs.get('slug'))
+        )
+
+    def get_context_data(self, **kwargs) -> dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        page_title = f'{self.object_list[0].category.name}'
+        context.update(
+            {
+                'page_title': page_title,
+            }
+        )
+        return context
 
 
 def category(request, slug):
