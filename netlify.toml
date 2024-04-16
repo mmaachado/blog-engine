@@ -1,2 +1,2 @@
 [build] 
-  command = "python engine/manage.py collectstatic --noinput" publish = "engine/static/"
+  command = "python engine/manage.py collectstatic --noinput"
