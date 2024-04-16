@@ -2,6 +2,16 @@
 
 :root {
   /* colors */
+
+  --background-primary: hsl(252, 19%, 95%);
+  --background-navbar: hsl(250, 27%, 17%);
+
+  --text-primary: hsl(251, 27%, 8%);
+  --text-dark: hsl(250, 30%, 4%);
+  --text-hover: hsl(250, 29%, 28%);
+
+  --white: hsl(252, 19%, 95%);
+
   --_clr-base-hue: 213;
   --_clr-primary: var(--_clr-base-hue) 100%;
   --_clr-gray: var(--_clr-base-hue) 10%;
@@ -27,9 +37,7 @@
   --clr-gray-dkst: var(--_clr-gray) 10%;
 
   /* Font-family */
-  --ff-regular: Georgia, 'Times New Roman', Times, serif;
-  --ff-headings: Georgia, 'Times New Roman', Times, serif;
-  --ff-mono: 'Courier New', Courier, monospace;
+  --font-family: 'Roboto', sans-serif;
 
   /* Font-Sizes */
   /* https://royalfig.github.io/fluid-typography-calculator/ */
@@ -77,12 +85,12 @@ html {
 }
 
 body {
-  background-color: hsl(var(--clr-white));
-  color: hsl(var(--clr-black));
+  background-color: var(--background-primary);
+  color: var(--text-primary);
   font-size: 20px;
   /* Fallback value */
   font-size: var(--fs-base);
-  font-family: var(--ff-regular);
+  font-family: var(--font-family);
   line-height: var(--lh-regular);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -90,13 +98,14 @@ body {
 }
 
 a {
-  color: hsl(var(--clr-primary-base));
+  color: var(--text-primary);
   text-decoration: none;
+  transition: opacity 300ms ease-in-out;
 }
 
 a:hover {
-  color: hsl(var(--clr-primary-dk));
-  text-decoration: underline;
+  color: var(--text-hover);
+  text-decoration: none;
 }
 
 h1,
@@ -105,7 +114,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--ff-headings);
+  font-family: var(--font-family);
   line-height: var(--lh-headings);
   margin: var(--spacing-base) 0;
 }
@@ -155,7 +164,7 @@ pre {
 
 pre,
 code {
-  font-family: var(--ff-mono);
+  font-family: var(--font-family);
 }
 
 input[type='search']::-webkit-search-decoration,
@@ -192,6 +201,12 @@ html,
 }
 
 /* Sections */
+.top-bar {
+  background-color: var(--background-navbar);
+  color: var(--white);
+  height: 3rem;
+}
+
 .section-content-wide {
   max-width: var(--mw-grid);
 }
@@ -295,7 +310,7 @@ html,
 }
 
 .search-input:focus {
-  border: 2px solid hsl(var(--clr-primary-base));
+  border: 2px solid var(--background-navbar);
 }
 
 .search-btn {
@@ -313,8 +328,16 @@ html,
   color: hsl(var(--clr-gray-ltr));
 }
 
+.search-btn:hover {
+  color: var(--text-hover);
+}
+
+.search-content:hover {
+  color: var(--text-hover);
+}
+
 .search-content:focus-within .search-btn {
-  color: hsl(var(--clr-primary-base));
+  color: var(--background-navbar);
 }
 
 /* Footer */
@@ -335,6 +358,12 @@ html,
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-base);
+  max-width: 32px;
+}
+
+.django-icon {
+  max-width: 24px;
+  display: inline;
 }
 
 .emoji:before {
@@ -368,6 +397,7 @@ html,
   align-items: center;
   justify-content: center;
   gap: var(--spacing-base);
+  font-size: var(--fs-sm);
   flex-flow: row wrap;
 }
 
@@ -390,6 +420,7 @@ html,
   flex-flow: row wrap;
   align-items: center;
   gap: var(--spacing-smlst);
+  margin-top: 1rem;
 }
 
 .post-tags .post-tag-link,
@@ -399,7 +430,7 @@ html,
 
 .post-tags .post-tag-link:hover,
 .post-tags .post-tag-link:hover i {
-  color: hsl(var(--clr-primary-base));
+  color: var(--text-hover);
   text-decoration: none;
 }
 
