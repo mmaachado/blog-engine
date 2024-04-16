@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
 :root {
-  /* Colors */
+  /* colors */
   --_clr-base-hue: 213;
   --_clr-primary: var(--_clr-base-hue) 100%;
   --_clr-gray: var(--_clr-base-hue) 10%;

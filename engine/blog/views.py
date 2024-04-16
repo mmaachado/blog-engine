@@ -37,7 +37,7 @@ class CreatedByListView(PostListView):
 
         if user.first_name:
             user_full_name = f'{user.first_name} {user.last_name}'
-        page_title = user_full_name + ' posts - '
+        page_title = user_full_name + ' posts 🐍 '
 
         context.update(
             {
@@ -83,7 +83,7 @@ class CategoryListView(PostListView):
 
     def get_context_data(self, **kwargs) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
-        page_title = f'{self.object_list[0].category.name}'
+        page_title = f'{self.object_list[0].category.name} 🐍 '
         context.update(
             {
                 'page_title': page_title,
@@ -102,7 +102,7 @@ class TagListView(PostListView):
 
     def get_context_data(self, **kwargs) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
-        page_title = f'#{self.object_list[0].tags.first().name}'
+        page_title = f'#{self.object_list[0].tags.first().name} 🐍 '
         context.update(
             {
                 'page_title': page_title,
@@ -135,7 +135,7 @@ class SearchListView(PostListView):
         context = super().get_context_data(**kwargs)
         context.update(
             {
-                'page_title': f'cat {self._search_value[:30]} @',
+                'page_title': f'grep "{self._search_value[:30]}" ',
                 'search_value': self._search_value,
             }
         )
@@ -157,7 +157,7 @@ class PageDetailView(DetailView):
     def get_context_data(self, **kwargs) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
         page = self.get_object()
-        page_title = f'{page.title}'
+        page_title = f'{page.title} 🐍 '
         context.update(
             {
                 'page_title': page_title,
@@ -178,7 +178,7 @@ class PostDetailView(DetailView):
     def get_context_data(self, **kwargs) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
         post = self.get_object()
-        page_title = f'{post.title}'
+        page_title = f'{post.title} 🐍 '
         context.update(
             {
                 'page_title': page_title,
