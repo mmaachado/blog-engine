@@ -13,8 +13,9 @@
             </div>
             {% else %}
             <div class="not-found center">
-                <h1>oh no 😞</h1>
-                <p>I could not find anything on this query, try returning to the <a href="{% url 'blog:index' %}">Home</a></p>
+                <h1>You roll a D20, and. . .</h1>
+                <p>You just discovered a dark, mysteriously empty place. While attempting to discover where you are, an unknown voice speaks clearly into your thoughts: </p>
+                <p><small>"The page you are looking for isn't here. It might be somewhere else, or it may never been existed. Get back to your <a href="{% url 'blog:index' %}">Home</a> and take care of your steps!"</small></p>
             </div>
             {% endif %}
 
