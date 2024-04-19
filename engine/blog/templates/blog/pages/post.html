@@ -26,11 +26,15 @@
   <div class="single-post-content section-content-narrow">
       <div class="single-post-gap section-gap">
 
+	
+	
       {% if post.cover and post.cover_in_post_content %}
           <div class="single-post-cover pb-base">
               <img loading="lazy" src="{{ post.cover.url }}" alt="{{ post.title }}">
           </div>
-      {% endif %}
+	  {% endif %}
+
+	  
 
       <h2 class="single-post-title pb-base center">
         {{ post.title }}
@@ -43,7 +47,9 @@
               person
               </span>
             <span>
-                {% if post.created_by.first_name %}
+	   
+	      
+              {% if post.created_by.first_name %}
                   {{ post.created_by.first_name}}
                   {{ post.created_by.last_name}}
                 {% else %}
