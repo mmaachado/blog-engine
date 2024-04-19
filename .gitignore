@@ -72,7 +72,7 @@ cover/
 *.mo
 
 # Django stuff:
-static/
+engine/static/
 
 # Flask stuff:
 instance/
