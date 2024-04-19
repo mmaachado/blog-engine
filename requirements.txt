@@ -1,6 +1,7 @@
 asgiref==3.8.1
 Django==4.2.11
 django-summernote==0.8.20.0
+django-axes==6.4.0
 mccabe==0.6.1
 mslex==1.2.0
 pathspec==0.12.1
