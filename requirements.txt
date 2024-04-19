@@ -14,3 +14,4 @@ pyflakes==2.4.0
 sqlparse==0.4.4
 tzdata==2024.1
 webencodings==0.5.1
+whitenoise==6.6.0
